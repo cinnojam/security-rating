@@ -1,0 +1,16 @@
+spring:
+  datasource: 
+    continue-on-error: true
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:portfolio
+#    url: jdbc:mysql://localhost:3306/portfolio
+    username: sa
+    password: sa
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+#server:
+#  servlet:
+#    context-path: /${spring.application.name}

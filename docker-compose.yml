@@ -1,0 +1,39 @@
+version: "3.3"
+services:
+  security-rating:
+    build:
+      context: .
+      args:
+        JAR_FILE: "./target/security-rating-0.0.1-SNAPSHOT.jar"
+      labels:
+        org.label-schema.name: security-rating
+        org.label-schema.schema-version: "1.0"
+        org.label-schema.vcs-url: https://github.com/cinnojam/security-rating.git
+    # Pull the image we uploaded in step 2 from the registry.
+    image: cinnojam/security-rating:latest
+    deploy:
+      # Run x instances of that image as a service called web
+      replicas: 1
+      resources:
+        limits:
+          # Limit each instance to use, at most, 10% of the CPU (across all cores)
+          cpus: "0.1"
+          # Limit each instance to use, at most, 50MB of RAM
+          memory: 50M
+        reservations:
+          # Limit each instance to use, at most, 10% of the CPU (across all cores)
+          cpus: "0.1"
+          # Limit each instance to use, at most, 50MB of RAM
+          memory: 50M
+      # Immediately restart containers if one fails.
+      restart_policy:
+        condition: on-failure
+    # Map port 80 on the host to web’s port 80.
+    ports:
+      - "8081:8081"
+    # Instruct web’s containers to share port 80 via a load-balanced network called webnet. (Internally, the containers themselves publish to web’s port 80 at an ephemeral port.)
+    networks:
+      - webnet
+# Define the webnet network with the default settings (which is a load-balanced overlay network).
+networks:
+  webnet:

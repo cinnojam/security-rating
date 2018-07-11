@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: security-rating
+  data:
+    rest:
+      basePath: /security-rating
+  datasource: 
+    continue-on-error: true
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:portfolio
+    username: sa
+    password: sa
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        ddl-auto: create-drop
+server:
+  port: 8081
