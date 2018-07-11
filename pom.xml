@@ -23,7 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<docker.image.user>cinnojam</docker.image.user>
-		<docker.image.tag>cinnojam</docker.image.tag>
+		<docker.image.tag>latest</docker.image.tag>
 	</properties>
 	<scm>
 		<connection>scm:git:git@github.com:cinnojam/security-rating.git</connection>
