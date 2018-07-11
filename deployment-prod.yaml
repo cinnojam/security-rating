@@ -27,5 +27,5 @@ spec:
         name: security-rating
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8081
           name: backend-http
